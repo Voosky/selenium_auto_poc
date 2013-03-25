@@ -17,8 +17,8 @@ public class UIMap {
 		}
 	}
 	
-	/*Method used to return a locator Key's xpath value from the "uimap.properties" document.
-	 * @entryID - the Key name used to retrieve its specific xpath location on the page.
+	/*Method used to return a locator Key's XPath value from the "uimap.properties" document.
+	 * @entryID - the Key name used to retrieve its specific XPath location on the page.
 	*/
 	public static String find(String entryID) {
 		return instance.properties.getProperty(entryID);
