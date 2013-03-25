@@ -17,6 +17,9 @@ public class MessageMap {
 		}
 	}
 	
+	/*Method used to return a message Key's value from the "messages.properties" document.
+	 * @propertyID - the Key name used to retrieve its specific message.
+	*/
 	public static String find(String entryID) {
 		return instance.properties.getProperty(entryID);
 	}
