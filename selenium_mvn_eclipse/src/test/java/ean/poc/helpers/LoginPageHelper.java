@@ -45,8 +45,8 @@ public class LoginPageHelper {
 	
 	
 	/*Method used to verify that a success message is displayed in the log-in page after creating a new account.
-	* @ean.poc.login.form.creationSuccess - the XPath location of the error field on the Create Account page.
-	* @ean.poc.createAccount.errorMessage.invalidEmail - retrieves the value of the "Invalid Email" error message Key. 
+	* @ean.poc.login.form.creationSuccessField - the XPath location of the error field on the Create Account page.
+	* @ean.poc.login.successMessage.accountCreated - retrieves the value of the "Successful Account Creation" message Key. 
 	*/ 
 	public void verifySuccessfulCreation(WebDriver driver) throws Exception {
 		String errorMessage = driver.findElement(By.xpath(UIMap.find("ean.poc.login.form.creationSuccessField"))).getText();
