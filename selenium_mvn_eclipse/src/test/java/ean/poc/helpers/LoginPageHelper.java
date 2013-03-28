@@ -43,15 +43,34 @@ public class LoginPageHelper {
 		driver.findElement(By.xpath(UIMap.find("ean.poc.login.button.createAccount"))).click();
 	}
 	
+	/*Method used to verify that a static message is displayed in the log-in page, informing the user on how to log in.
+	* @ean.poc.login.form.instructionFieldLogIn - the XPath location of the static message field on the Login page.
+	* @ean.poc.login.staticMessage.instructionMessage - retrieves the value of the static instruction message Key. 
+	*/ 
+	public void verifyLogInInstructionMessage (WebDriver driver) throws Exception{
+		String staticMessage = driver.findElement(By.xpath(UIMap.find("ean.poc.login.form.instructionFieldLogIn"))).getText();
+
+		Assert.assertEquals(staticMessage, MessageMap.find("ean.poc.login.staticMessage.instructionMessage"));
+	}
+	
+	/*Method used to verify that a static message is displayed in the log-out page, informing the user on how to log in again.
+	* @ean.poc.login.form.instructionFieldLogOut - the XPath location of the static message field on the Login page, after having logged out!
+	* @ean.poc.login.staticMessage.instructionMessage - retrieves the value of the static instruction message Key. 
+	*/ 
+	public void verifyLogOutInstructionMessage (WebDriver driver) throws Exception{
+		String staticMessage = driver.findElement(By.xpath(UIMap.find("ean.poc.login.form.instructionFieldLogOut"))).getText();
+
+		Assert.assertEquals(staticMessage, MessageMap.find("ean.poc.login.staticMessage.instructionMessage"));
+	}
 	
 	/*Method used to verify that a success message is displayed in the log-in page after creating a new account.
-	* @ean.poc.login.form.creationSuccessField - the XPath location of the error field on the Create Account page.
+	* @ean.poc.login.form.creationSuccessField - the XPath location of the error field on the Login Account page.
 	* @ean.poc.login.successMessage.accountCreated - retrieves the value of the "Successful Account Creation" message Key. 
 	*/ 
 	public void verifySuccessfulCreation(WebDriver driver) throws Exception {
-		String errorMessage = driver.findElement(By.xpath(UIMap.find("ean.poc.login.form.creationSuccessField"))).getText();
+		String successMessage = driver.findElement(By.xpath(UIMap.find("ean.poc.login.form.creationSuccessField"))).getText();
 		
-		Assert.assertEquals(errorMessage, MessageMap.find("ean.poc.login.successMessage.accountCreated"));
+		Assert.assertEquals(successMessage, MessageMap.find("ean.poc.login.successMessage.accountCreated"));
 	}
 	
 	

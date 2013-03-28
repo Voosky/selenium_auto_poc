@@ -52,6 +52,37 @@ public class CreateAccountPageHelper {
 	}
 	
 	
+	//Method used to 
+	public void verifyCreateInstructionMessage(WebDriver driver) throws Exception {
+		String instructionMessage = driver.findElement(By.xpath(UIMap.find("ean.poc.createAccount.form.instructionMessage"))).getText();
+		
+		Assert.assertEquals(instructionMessage, MessageMap.find("ean.poc.createAccount.staticMessage.instructionMessage"));
+	}
+	
+	
+	/*Method used to verify the cannot create an account by leaving blank values in the fields.
+	* @ean.poc.createAccount.form.errorField - the XPath location of the error field on the Create Account page.
+	* @ean.poc.createAccount.errorMessage.emptyValueError - retrieves the value of the empty value error message Key. 
+	*/
+	public void verifyEmptyValueError(WebDriver driver) throws Exception {
+		String errorMessage = driver.findElement(By.xpath(UIMap.find("ean.poc.createAccount.form.errorField"))).getText();
+		
+		Assert.assertEquals(errorMessage, MessageMap.find("ean.poc.createAccount.errorMessage.emptyValueError"));
+	}
+	
+	
+	
+	/*Method used to verify the error message received if a user creates an account that already exists. 
+	* @ean.poc.createAccount.form.errorField - the XPath location of the error field on the Create Account page.
+	* @ean.poc.createAccount.errorMessage.userAlreadyExists - retrieves the value of the "Account already Exists" error message Key. 
+	*/
+	public void verifyUserAlreadyExists(WebDriver driver) throws Exception {
+		String errorMessage = driver.findElement(By.xpath(UIMap.find("ean.poc.createAccount.form.errorField"))).getText();
+		
+		Assert.assertEquals(errorMessage, MessageMap.find("ean.poc.createAccount.errorMessage.userAlreadyExists"));
+	}
+	
+	
 	/*Method used to verify the User Name field in terms of length(minimum and maximum), 
 	* supported characters, and null/blank values. 
 	* @ean.poc.createAccount.form.errorField - the XPath location of the error field on the Create Account page.
