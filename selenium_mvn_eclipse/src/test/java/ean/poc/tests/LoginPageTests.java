@@ -2,7 +2,7 @@ package ean.poc.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import ean.poc.EANSeleniumTestConfig;
 import ean.poc.helpers.CreateAccountPageHelper;
@@ -16,7 +16,20 @@ public class LoginPageTests {
 	LoginPageHelper loginHelper = new LoginPageHelper();
 	TopBarHelper topBar = new TopBarHelper();
 	IndexPageHelper indexHelper = new IndexPageHelper();
-	CreateAccountPageHelper CreateAccountHelper = new CreateAccountPageHelper();
+	CreateAccountPageHelper createAccountHelper = new CreateAccountPageHelper();
+	
+	WebDriver fireFoxDriver;
+	
+	@BeforeMethod
+	public void setUp() {
+		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
+		fireFoxDriver = new FirefoxDriver();
+	}
+	
+	@AfterMethod
+	public void tearDown() {
+		fireFoxDriver.quit();
+	}
 
 	/*The first test scenario checks that a user can successfully log in and out of the application*/
 	@Test
@@ -24,10 +37,6 @@ public class LoginPageTests {
 		String baseUrl = config.getSiteBaseUrl();
 		String username = config.getUsername();
 		String password = config.getPassword();
-		
-		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
 		
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
@@ -43,9 +52,6 @@ public class LoginPageTests {
 		topBar.clickLogOutButton(fireFoxDriver);
 		Thread.sleep(2000);
 		loginHelper.verifyLogOutInstructionMessage(fireFoxDriver);
-			
-		fireFoxDriver.quit();
-		
 	}
 	
 	
@@ -57,10 +63,6 @@ public class LoginPageTests {
 		String username = config.getUsername();
 		String password = config.getPassword();
 				
-		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
-		
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
 		topBar.clickLoginButton(fireFoxDriver);
@@ -78,9 +80,6 @@ public class LoginPageTests {
 		loginHelper.clickLogin(fireFoxDriver);
 		Thread.sleep(2000);
 		indexHelper.verifyDestinationQuestion(fireFoxDriver);
-		
-		fireFoxDriver.quit();
-		
 	}
 	
 	
@@ -90,8 +89,6 @@ public class LoginPageTests {
 	public void thirdTestScenario() throws Exception {
 		String baseUrl = config.getSiteBaseUrl();
 		
-		WebDriver fireFoxDriver = new FirefoxDriver();
-		
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
 		topBar.clickLoginButton(fireFoxDriver);
@@ -99,8 +96,6 @@ public class LoginPageTests {
 		loginHelper.clickLogin(fireFoxDriver);
 		Thread.sleep(2000);
 		loginHelper.verifyInvalidUserPass(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 	
 	
@@ -110,9 +105,7 @@ public class LoginPageTests {
 	public void fourthTestScenario() throws Exception {
 		String baseUrl = config.getSiteBaseUrl();
 		String username = config.getUsername();
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
-		
+
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
 		topBar.clickLoginButton(fireFoxDriver);
@@ -121,8 +114,6 @@ public class LoginPageTests {
 		loginHelper.clickLogin(fireFoxDriver);
 		Thread.sleep(2000);
 		loginHelper.verifyInvalidUserPass(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 	
 	
@@ -133,8 +124,6 @@ public class LoginPageTests {
 		String baseUrl = config.getSiteBaseUrl();
 		String password = config.getPassword();
 		
-		WebDriver fireFoxDriver = new FirefoxDriver();
-		
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
 		topBar.clickLoginButton(fireFoxDriver);
@@ -143,8 +132,6 @@ public class LoginPageTests {
 		loginHelper.clickLogin(fireFoxDriver);
 		Thread.sleep(2000);
 		loginHelper.verifyInvalidUserPass(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 	
 	
@@ -155,9 +142,7 @@ public class LoginPageTests {
 		String baseUrl = config.getSiteBaseUrl();
 		String username = "userInexistent";
 		String password = "parolaInexistenta";
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
-		
+
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
 		topBar.clickLoginButton(fireFoxDriver);
@@ -167,8 +152,6 @@ public class LoginPageTests {
 		loginHelper.clickLogin(fireFoxDriver);
 		Thread.sleep(2000);
 		loginHelper.verifyInvalidUserPass(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 	
 	
@@ -179,9 +162,7 @@ public class LoginPageTests {
 		String baseUrl = config.getSiteBaseUrl();
 		String username = "youngMan01";
 		String password = "Q!W@E#R$T%Y^";
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
-		
+
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
 		topBar.clickLoginButton(fireFoxDriver);
@@ -191,8 +172,6 @@ public class LoginPageTests {
 		loginHelper.clickLogin(fireFoxDriver);
 		Thread.sleep(2000);
 		loginHelper.verifyInvalidUserPass(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 	
 	
@@ -201,17 +180,13 @@ public class LoginPageTests {
 	@Test
 	public void eightTestScenario() throws Exception {
 		String baseUrl = config.getSiteBaseUrl();
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
-		
+
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
 		topBar.clickLoginButton(fireFoxDriver);
 		Thread.sleep(2000);
 		loginHelper.clickNewAccount(fireFoxDriver);
 		Thread.sleep(2000);
-		CreateAccountHelper.verifyCreateInstructionMessage(fireFoxDriver);
-		
-		fireFoxDriver.quit();
+		createAccountHelper.verifyCreateInstructionMessage(fireFoxDriver);
 	}
 }

@@ -2,6 +2,8 @@ package ean.poc.tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import ean.poc.EANSeleniumTestConfig;
@@ -17,6 +19,19 @@ public class CreateAccountPageTests {
 	TopBarHelper topBar = new TopBarHelper();
 	LoginPageHelper loginHelper = new LoginPageHelper();
 	CreateAccountPageHelper createAccountHelper = new CreateAccountPageHelper();
+	
+	WebDriver fireFoxDriver;
+	
+	@BeforeMethod
+	public void setUp() {
+		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
+		fireFoxDriver = new FirefoxDriver();
+	}
+	
+	@AfterMethod
+	public void tearDown() {
+		fireFoxDriver.quit();
+	}
 
 	/*The first test scenario checks that a user can reach the log-in page and click the "Create new account..."
 	 *  button, proceed to the Create Account page, create an account (all fields), and log in with that account*/
@@ -27,11 +42,6 @@ public class CreateAccountPageTests {
 		String email = "email@mail.com";
 		String password = "qazwsx123";
 		String verifyPassword = "qazwsx123";
-		
-		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
-
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
 		
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
@@ -53,8 +63,6 @@ public class CreateAccountPageTests {
 		loginHelper.clickLogin(fireFoxDriver);
 		Thread.sleep(2000);
 		indexHelper.verifyDestinationQuestion(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 	
 	
@@ -67,10 +75,6 @@ public class CreateAccountPageTests {
 		String username = "testAccount_3";
 		String password = "qazwsx123";
 		String verifyPassword = "qazwsx123";
-		
-		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
 		
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
@@ -100,8 +104,6 @@ public class CreateAccountPageTests {
 		loginHelper.clickLogin(fireFoxDriver);
 		Thread.sleep(2000);
 		indexHelper.verifyDestinationQuestion(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 	
 	
@@ -113,10 +115,6 @@ public class CreateAccountPageTests {
 		String username = "!@#";
 		String password = "qazwsx123";
 		String verifyPassword = "qazwsx123";
-		
-		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
 		
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
@@ -131,8 +129,6 @@ public class CreateAccountPageTests {
 		createAccountHelper.clickCreate(fireFoxDriver);
 		Thread.sleep(2000);
 		createAccountHelper.verifyUsernameError(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 	
 	
@@ -144,10 +140,6 @@ public class CreateAccountPageTests {
 		String email = "invalidEmail";
 		String password = "qazwsx123";
 		String verifyPassword = "qazwsx123";
-		
-		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
 		
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
@@ -163,8 +155,6 @@ public class CreateAccountPageTests {
 		createAccountHelper.clickCreate(fireFoxDriver);
 		Thread.sleep(2000);
 		createAccountHelper.verifyEmail(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 	
 	
@@ -176,10 +166,6 @@ public class CreateAccountPageTests {
 		String username = "validUser";
 		String password = "1234";
 		String verifyPassword = "1234";
-		
-		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
 		
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
@@ -194,8 +180,6 @@ public class CreateAccountPageTests {
 		createAccountHelper.clickCreate(fireFoxDriver);
 		Thread.sleep(2000);
 		createAccountHelper.verifyPasswordError(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 	
 	
@@ -206,10 +190,6 @@ public class CreateAccountPageTests {
 		String username = "validUser";
 		String password = "012345";
 		String verifyPassword = "012346";
-		
-		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
 		
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
@@ -224,8 +204,6 @@ public class CreateAccountPageTests {
 		createAccountHelper.clickCreate(fireFoxDriver);
 		Thread.sleep(2000);
 		createAccountHelper.verifyMatchingPasswordError(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 	
 	
@@ -233,10 +211,6 @@ public class CreateAccountPageTests {
 	@Test(enabled = false)
 	public void seventhTestScenario() throws Exception {
 		String baseUrl = config.getSiteBaseUrl();
-		
-		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
 		
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
@@ -248,8 +222,6 @@ public class CreateAccountPageTests {
 		createAccountHelper.clickCreate(fireFoxDriver);
 		Thread.sleep(2000);
 		createAccountHelper.verifyEmptyValueError(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 	
 	
@@ -260,10 +232,6 @@ public class CreateAccountPageTests {
 		String username = config.getUsername();
 		String password = config.getPassword();
 		String verifyPassword = config.getPassword();
-		
-		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
-		
-		WebDriver fireFoxDriver = new FirefoxDriver();
 		
 		fireFoxDriver.navigate().to(baseUrl);
 		Thread.sleep(2000);
@@ -278,7 +246,5 @@ public class CreateAccountPageTests {
 		createAccountHelper.clickCreate(fireFoxDriver);
 		Thread.sleep(2000);
 		createAccountHelper.verifyUserAlreadyExists(fireFoxDriver);
-		
-		fireFoxDriver.quit();
 	}
 }
