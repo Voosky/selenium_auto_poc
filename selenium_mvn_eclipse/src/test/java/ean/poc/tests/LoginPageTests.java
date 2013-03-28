@@ -22,7 +22,7 @@ public class LoginPageTests {
 	
 	@BeforeMethod
 	public void setUp() {
-		//System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
+		System.setProperty("webdriver.firefox.bin", "C:\\Users\\vlad.chertes\\AppData\\Local\\Mozilla Firefox\\Firefox.exe");
 		fireFoxDriver = new FirefoxDriver();
 	}
 	
