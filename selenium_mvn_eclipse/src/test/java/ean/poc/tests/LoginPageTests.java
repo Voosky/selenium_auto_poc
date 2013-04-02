@@ -31,56 +31,56 @@ public class LoginPageTests {
 		fireFoxDriver.quit();
 	}
 
-	/*The first test scenario checks that a user can successfully log in and out of the application*/
-	@Test
-	public void firstTestScenario() throws Exception {
-		String baseUrl = config.getSiteBaseUrl();
-		String username = config.getUsername();
-		String password = config.getPassword();
-		
-		fireFoxDriver.navigate().to(baseUrl);
-		Thread.sleep(2000);
-		topBar.clickLoginButton(fireFoxDriver);
-		Thread.sleep(2000);
-		loginHelper.verifyLogInInstructionMessage(fireFoxDriver);
-		loginHelper.setUsername(username, fireFoxDriver);
-		loginHelper.setPassword(password, fireFoxDriver);
-		loginHelper.clickLogin(fireFoxDriver);
-		Thread.sleep(2000);
-		indexHelper.verifyDestinationQuestion(fireFoxDriver);
-		Thread.sleep(2000);
-		topBar.clickLogOutButton(fireFoxDriver);
-		Thread.sleep(2000);
-		loginHelper.verifyLogOutInstructionMessage(fireFoxDriver);
-	}
-	
-	
-	/*The second test scenario checks that a user can successfully log in and out of the application,
-	 * and then log back in successfully*/
-	@Test
-	public void secondTestScenario() throws Exception {
-		String baseUrl = config.getSiteBaseUrl();
-		String username = config.getUsername();
-		String password = config.getPassword();
-				
-		fireFoxDriver.navigate().to(baseUrl);
-		Thread.sleep(2000);
-		topBar.clickLoginButton(fireFoxDriver);
-		Thread.sleep(2000);
-		loginHelper.verifyLogInInstructionMessage(fireFoxDriver);
-		loginHelper.setUsername(username, fireFoxDriver);
-		loginHelper.setPassword(password, fireFoxDriver);
-		loginHelper.clickLogin(fireFoxDriver);
-		Thread.sleep(2000);
-		topBar.clickLogOutButton(fireFoxDriver);
-		Thread.sleep(2000);
-		loginHelper.verifyLogOutInstructionMessage(fireFoxDriver);
-		loginHelper.setUsername(username, fireFoxDriver);
-		loginHelper.setPassword(password, fireFoxDriver);
-		loginHelper.clickLogin(fireFoxDriver);
-		Thread.sleep(2000);
-		indexHelper.verifyDestinationQuestion(fireFoxDriver);
-	}
+//	/*The first test scenario checks that a user can successfully log in and out of the application*/
+//	@Test
+//	public void firstTestScenario() throws Exception {
+//		String baseUrl = config.getSiteBaseUrl();
+//		String username = config.getUsername();
+//		String password = config.getPassword();
+//		
+//		fireFoxDriver.navigate().to(baseUrl);
+//		Thread.sleep(2000);
+//		topBar.clickLoginButton(fireFoxDriver);
+//		Thread.sleep(2000);
+//		loginHelper.verifyLogInInstructionMessage(fireFoxDriver);
+//		loginHelper.setUsername(username, fireFoxDriver);
+//		loginHelper.setPassword(password, fireFoxDriver);
+//		loginHelper.clickLogin(fireFoxDriver);
+//		Thread.sleep(2000);
+//		indexHelper.verifyDestinationQuestion(fireFoxDriver);
+//		Thread.sleep(2000);
+//		topBar.clickLogOutButton(fireFoxDriver);
+//		Thread.sleep(2000);
+//		loginHelper.verifyLogOutInstructionMessage(fireFoxDriver);
+//	}
+//	
+//	
+//	/*The second test scenario checks that a user can successfully log in and out of the application,
+//	 * and then log back in successfully*/
+//	@Test
+//	public void secondTestScenario() throws Exception {
+//		String baseUrl = config.getSiteBaseUrl();
+//		String username = config.getUsername();
+//		String password = config.getPassword();
+//				
+//		fireFoxDriver.navigate().to(baseUrl);
+//		Thread.sleep(2000);
+//		topBar.clickLoginButton(fireFoxDriver);
+//		Thread.sleep(2000);
+//		loginHelper.verifyLogInInstructionMessage(fireFoxDriver);
+//		loginHelper.setUsername(username, fireFoxDriver);
+//		loginHelper.setPassword(password, fireFoxDriver);
+//		loginHelper.clickLogin(fireFoxDriver);
+//		Thread.sleep(2000);
+//		topBar.clickLogOutButton(fireFoxDriver);
+//		Thread.sleep(2000);
+//		loginHelper.verifyLogOutInstructionMessage(fireFoxDriver);
+//		loginHelper.setUsername(username, fireFoxDriver);
+//		loginHelper.setPassword(password, fireFoxDriver);
+//		loginHelper.clickLogin(fireFoxDriver);
+//		Thread.sleep(2000);
+//		indexHelper.verifyDestinationQuestion(fireFoxDriver);
+//	}
 	
 	
 	/*The third test scenario checks that a user cannot log into the application 
